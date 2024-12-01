@@ -1,27 +1,26 @@
-# Question 3 [10 Marks]:  
-## Laundry Price Calculator
+# Question 1 [10 Marks]:  
+## Quiz Scoring System
 
-Write a Java program for a laundry service that meets the specifications below. Use **only switches** for this question. **Do not use if statements.**
+Write a Java program for a simple quiz scoring system that meets the specifications below. Use **if statements** to implement the program. 
 
 ### Requirements:
 
-1. **Displays a menu showing:**  
-   - Shirt (€3.00)  
-   - Pants (€4.00)  
-   - Jacket (€6.00)  
-   The program should be case-insensitive.
+1. **Pre-defined answers:**  
+   - Question 1: `"java"`  
+   - Question 2: `"scanner"`
 
-2. **Asks the user to:**  
-   - Enter a clothing item.  
-   - Choose the type of wash (`N` for Normal or `D` for Deluxe).  
-   The program should be case-insensitive.
+2. **Ask the user to:**  
+   - Answer Question 1:  
+     `"What programming language is known for its WORA (Write Once, Run Anywhere) capability?"`  
+   - Answer Question 2:  
+     `"Which Java class is used for taking input from the user?"`  
 
-3. **Calculates the price where:**  
-   - Normal wash uses the standard price shown above.  
-   - Deluxe wash adds **€2.00** to the price.  
+3. **Compare the user's answers with the correct answers:**  
+   - If the answer matches the correct answer, award **1 point**.  
+   - Answers should be **case-insensitive**.
 
-4. **Displays a summary showing the clothing item, wash type, and final price.**  
-   - Prices should be displayed to **2 decimal places**.  
+4. **Display the results at the end:**  
+   - Show how many points the user scored out of 2.
 
-### Additional Requirements:  
-The program should handle invalid inputs for both clothing item and wash type.
+### Example Output:
+#### Sample Run 1:
