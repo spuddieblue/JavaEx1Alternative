@@ -1,122 +1,57 @@
-# Java Program: Workout Tracker
+# Forensic Examination Steps for the Exam
 
-### **Objective:**
-Write a Java program that serves as a workout tracker for users. The program allows users to log their workouts, view their workout history, and provides a summary of their workout statistics.
+## **Step 1: Creating a Forensic Copy of the Y Drive**
+1. **Log into the remote machine on Azure Labs**:
+   - **Username**: Use the provided credentials.
+   - **Password**: `Forensics2024` (with a capital F).
 
----
+2. **Start FTK Imager**:
+   - Open the FTK Imager application on the remote machine.
 
-### **Detailed Requirements:**
+3. **Create a forensic copy of the Y drive**:
+   - Ensure the Y drive is plugged into the machine (or plug it in if not already connected).
+   - In FTK Imager, go to **File > Create Disk Image**.
+   - Choose the **source** as the Y drive and proceed.
 
-#### **1. Functionality Overview:**
-- The program keeps a record of workouts for each user in a text file.
-- It allows users to:
-  - Add new workouts.
-  - View workout history.
-  - Exit the program.
+4. **Generate a forensic image**:
+   - Select **Raw (dd)** as the image format.
+   - Choose a location to save the image (e.g., a designated folder on the machine).
+   - Provide an appropriate name for the image file.
 
----
-
-#### **2. Features:**
-
-##### **a. User Management:**
-- Each user is identified by a username.
-- Workout records are saved in a dedicated file named `<username>_workouts.txt` inside a `users` folder.
-- If the user is new, the program creates a file for them. If the user already exists, it welcomes them back and loads their workout history.
-
-##### **b. Adding Workouts:**
-- Users can log exercises with the type of activity and amount:
-  - If the exercise is running (contains "run"), the amount is logged in minutes.
-  - For all other exercises, the amount is logged in reps.
-
-##### **c. Viewing Workouts:**
-- Users can view their workout history by reading the saved file.
-
-##### **d. Workout Summary:**
-- At the end of the session, the program provides an analysis of the user's workout history, including:
-  - Total workouts completed.
-  - Total reps and minutes across all workouts.
-  - Highest reps in one workout.
-  - Longest workout in minutes.
-  - Average reps and minutes per workout.
+5. **Hashing**:
+   - Make sure FTK Imager generates **two hashes**:
+     - **MD5**
+     - **SHA-1**
+   - Write down the **last six digits** of both hashes in your workbook.
 
 ---
 
-#### **3. Inputs:**
-- **Username**: A unique string identifying the user.
-- **Exercise Details**:
-  - Name of the exercise.
-  - Amount of reps (or minutes if it's running).
-- **Menu Choice**:
-  - `1` for adding workouts.
-  - `2` for viewing workouts.
-  - `3` to exit the program.
+## **Step 2: Analyzing the Provided Image with Autopsy**
+1. **Locate the provided image file**:
+   - On the desktop of the remote machine, find the file named `exam_image.00`.
+
+2. **Create a new Autopsy case**:
+   - Open the Autopsy application.
+   - Create a **new case** and import the `exam_image.00` file.
+
+3. **Recover files from the image**:
+   - Use Autopsy to recover **all files** from the provided image.
+
+4. **Extract files**:
+   - Extract the recovered files to a designated folder.
+
+5. **Create tags and comments**:
+   - Review all the extracted files.
+   - Assign **tags** to the files based on their content or significance.
+   - Add **appropriate comments** for each file.
+
+6. **Generate an HTML report**:
+   - In Autopsy, create an **HTML report** that includes:
+     - The recovered files.
+     - Tags and comments you have created.
 
 ---
 
-#### **4. Outputs:**
-- Welcome message (new or returning user).
-- Workout history (when viewed).
-- Confirmation message when a workout is logged.
-- Final workout summary, including:
-  - Total workouts.
-  - Total reps and minutes.
-  - Maximum reps and longest workout.
-  - Average reps and minutes per workout.
-
----
-
-### **Example Execution:**
-
-#### **Session Start:**
-=== Workout Tracker === Enter username: JohnDoe Welcome back, JohnDoe! Loading your workout history...
-
-=== JohnDoe's Workout Tracker ===
-
-Add Workout
-View Workouts
-Exit
-Choice: 1 Enter exercise: Push-ups Enter number of reps/minutes: 30 Workout saved to your log!
-
-=== JohnDoe's Workout Tracker ===
-
-Add Workout
-View Workouts
-Exit
-Choice: 2
-
-Your Workout History: Push-ups: 30 reps Running: 20 minutes Pull-ups: 15 reps
-
-markdown
-Copy code
-
-#### **Session Summary:**
-=== JohnDoe's Workout Summary === Total workouts completed: 3 Total reps across all exercises: 45 Total minutes across all exercises: 20 Highest reps in one workout: 30 Longest workout (in minutes): 20 Average reps per workout: 15.00 Average minutes per workout: 6.67
-
-Keep up the good work, JohnDoe!
-
-markdown
-Copy code
-
----
-
-### **Edge Cases to Consider:**
-- **New User**: Ensure the program creates a new file and does not crash if the user's file does not exist.
-- **No Workouts Logged**: Handle cases where a user views the summary without logging any workouts.
-- **Case Insensitivity**: Ensure usernames and exercises are treated in a case-insensitive manner (e.g., `Running` and `running` should be considered the same).
-
----
-
-### **Implementation Details:**
-- Use the `Scanner` class for user input and the `File` class for managing user files.
-- Log workouts using `FileWriter` and `PrintWriter` to append data to the user's file.
-- Read workout history using a `Scanner` object with the user's file.
-- Perform analysis on the workout file by parsing the stored data.
-
----
-
-### **Expected Learning Outcomes:**
-- Understand file handling in Java (`File`, `FileWriter`, `PrintWriter`, `Scanner`).
-- Work with loops (`do-while`) for menu-driven programs.
-- Develop modular programs with conditional logic (`if-else`).
-- Learn how to calculate and display summary statistics from stored data.
-- Practice user-friendly input/output handling.
+## **Final Steps**
+- Once completed, **shut down the machine**.
+- There is **no need to upload anything to Moodle**. Your report and case will be reviewed later.
